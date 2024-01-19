@@ -6,11 +6,13 @@ import Button from "./components/Button";
 import {useState} from "react";
 import IconButton from "./components/IconButtom";
 import CircleButton from "./components/CircleButton";
+import EmojiPicker from "./components/EmojiPicker";
 
 const PlaceholderImage = require('./assets/images/background-image.png');
 export default function App() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [showAppOptions, setShowAppOptions] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const pickImageAsync = async () => {
         let result = await launchImageLibraryAsync({
             allowsEditing: true,
@@ -30,11 +32,15 @@ export default function App() {
     }
 
     const onAddSticker = () => {
-
+        setShowModal(true);
     };
 
     const onSaveImageAsync = async () => {
 
+    }
+
+    const onModalClose = () => {
+        setShowModal(false);
     }
 
     return (
@@ -56,6 +62,9 @@ export default function App() {
                 <Button label={"Use this photo"} onPress={() => setShowAppOptions(true)}/>
             </View>
         )}
+        <EmojiPicker isVisible={showModal} onClose={onModalClose}>
+
+        </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
