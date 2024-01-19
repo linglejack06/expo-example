@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 60,
         borderWidth: 4,
         borderColor: '#ffd33d',
+        borderRadius: 42,
         padding: 3,
     },
     circleButton: {
